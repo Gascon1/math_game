@@ -23,18 +23,18 @@ class Player
     second_num = generate_num
     sum = first_num + second_num
     puts "#{player.name}: What does #{first_num} plus #{second_num} equal?"
-    print "=>"
-    answer(sum)
+    print ">> "
+    answer(sum, player)
   end
 
 
-  def answer(sum)
+  def answer(sum, player)
     player_answer = gets.chomp
     
     if player_answer.to_i == sum # how to access sum from another method
-      puts "Good work, you got it."
+      puts "#{player.name}: Good work, you got it."
     else
-      puts "Hmmm? Can you even read?"
+      puts "#{player.name}: Hmmm? Can you even read?"
       @hp -= 1
     end
   end
