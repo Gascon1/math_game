@@ -1,17 +1,3 @@
-Player 1: What does 5 plus 3 equal?
-> 9
-Player 1: Seriously? No!
-P1: 2/3 vs P2: 3/3
------ NEW TURN -----
-Player 2: What does 2 plus 6 equal?
-> 8
-Player 2: YES! You are correct.
-P1: 2/3 vs P2: 3/3
------ NEW TURN -----
-... some time later ...
-Player 1 wins with a score of 1/3
------ GAME OVER -----
-Good bye!
 
 # this will be the class to define every player playing the game 
 class Player(name)
@@ -27,30 +13,34 @@ class Player(name)
     @hp <= 0
   end
 
-end
-
-# this will be the class taking care of switching turns 
-class Turns
-end
-
-# this will be the class in charge of player scores
-class Score
-end
-
-# this will be the class in charge of the math questions
-class Questions
-end
-
-class Game 
-  def initialize 
-    @player1 = Player.new("The GLOAT")
-    @player2 = PLayer.new("Surgy Girl")
-    @players = [@player1, @player2]
-    @round = 1
+  def generate_num
+    rand(1..20)
   end
+  
+  def asks_question(player)
+
+    first_num = generate_num
+    second_num = generate_num
+    sum = first_num + second_num
+    puts "#{player.name}: What does #{first_num} plus #{second_num} equal?"
+    sum
+  end
+
+
+  def answer
+    player_answer = gets.chomp
+    if player_answer == 6 # how to access sum from another method
+      puts "YES! You are correct."
+    else
+      puts "Seriously? No!"
+      @hp -= 1
+    end
+  end
+
+
+
 end
 
-def next_round
-    @round += 1 
-    @players.rotate!
-  end
+
+
+
