@@ -3,7 +3,7 @@ require_relative 'player'
 class Game 
   def initialize 
     @player1 = Player.new("The GLOAT")
-    @player2 = PLayer.new("Surgy Girl")
+    @player2 = Player.new("Surgy Girl")
     @players = [@player1, @player2]
     @round = 1
   end
@@ -22,7 +22,7 @@ class Game
   end
 
   def game_status
-    puts "P1: #{@player1.hp} vs P2 #{@player2.hp}"
+    puts "P1: #{@player1.hp}/3 vs P2 #{@player2.hp}/3"
     puts "----- NEW TURN -----"
     puts
   end
@@ -37,9 +37,14 @@ class Game
       
       game_status
       
-      asks_question(current_player)
-      opponent_player.answer
+      current_player.asks_question(current_player)
+
+      puts 
+
+      next_round
 
     end
+
+    puts "The winner is #{alive_players.first.name}!"
   end
 end

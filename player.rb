@@ -1,6 +1,6 @@
 
 # this will be the class to define every player playing the game 
-class Player(name)
+class Player
   attr_reader :name
   attr_accessor :hp
 
@@ -23,16 +23,18 @@ class Player(name)
     second_num = generate_num
     sum = first_num + second_num
     puts "#{player.name}: What does #{first_num} plus #{second_num} equal?"
-    sum
+    print "=>"
+    answer(sum)
   end
 
 
-  def answer
+  def answer(sum)
     player_answer = gets.chomp
-    if player_answer == 6 # how to access sum from another method
-      puts "YES! You are correct."
+    
+    if player_answer.to_i == sum # how to access sum from another method
+      puts "Good work, you got it."
     else
-      puts "Seriously? No!"
+      puts "Hmmm? Can you even read?"
       @hp -= 1
     end
   end
